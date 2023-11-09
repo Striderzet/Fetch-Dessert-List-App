@@ -43,7 +43,7 @@ struct MealDetailView: View {
                             .minimumScaleFactor(AppValueConstants.Numeric.textMinScale.rawValue)
                             .padding()
                         
-                        AsyncImage(imageUrl: meal.strMealThumb ?? "")
+                        AsyncImageCustom(imageUrl: meal.strMealThumb ?? "")
                             .frame(width: AppValueConstants.Numeric.imageSize.rawValue, height: AppValueConstants.Numeric.imageSize.rawValue)
                             .cornerRadius(AppValueConstants.Numeric.imageCorner.rawValue)
                             .padding()

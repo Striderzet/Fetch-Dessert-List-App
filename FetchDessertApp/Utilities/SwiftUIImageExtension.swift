@@ -11,7 +11,7 @@ import SwiftUI
 /// The reason for this public method is that I am running Xcode 12.5.1 and "AsyncImage" does not exist. Therefore, I have to recreate it here
 /// - Parameter imageUrl: The origin of the desired image to be presented
 /// - Returns: An Image view presenting the desired image
-public func AsyncImage(imageUrl: String) -> Image {
+public func AsyncImageCustom(imageUrl: String) -> Image {
     if let data = try? Data(contentsOf: URL(string: imageUrl) ?? URL(fileURLWithPath: "")) {
         return Image(uiImage: UIImage(data: data)!)
             .resizable()
