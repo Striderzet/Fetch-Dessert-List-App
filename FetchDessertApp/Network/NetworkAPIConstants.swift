@@ -18,7 +18,7 @@ enum APIEndpoint {
     case getDesserts
     case getMealDetails(mealId: String)
     
-    /*var key: String {
+    var key: String {
         switch self {
         case .getDesserts:
             return "filter.php"
@@ -36,11 +36,12 @@ enum APIEndpoint {
         }
     }
     
+    /// This does not work with these URL's, but it needs to be here just in case
     var queryItems: [URLQueryItem] {
         return [URLQueryItem(name: self.key, value: self.value)]
-    }*/
+    }
     
-    var value: String {
+    var fullValueSuffix: String {
         switch self {
         case .getDesserts:
             return "filter.php?c=Dessert"

@@ -18,7 +18,7 @@ final class NetworkManager {
     ///   - endpoint: The string of the URL API call
     ///   - type: The type that will be returned to a desired object
     /// - Returns: Future/Promise with object type and error
-    static func makeCall<T: Decodable>(fromEndpoint endpoint: String,
+    static func makeCall<T: Decodable>(fromEndpoint endpoint: APIEndpoint,
                                        toType type: T.Type) -> Future<T, Error> {
         
         return Future { promise in
@@ -54,14 +54,19 @@ final class NetworkManager {
     }
     
     /// This is for potential URL abstraction in the future
-    static private func constructURLComponents(endpoint: String) -> URL {
+    static private func constructURLComponents(endpoint: APIEndpoint) -> URL {
         
         var components = URLComponents()
         components.scheme = URLConstnats.scheme.rawValue
         components.host = URLConstnats.host.rawValue
         components.path = URLConstnats.path.rawValue
         
-        return URL(string: (components.url?.absoluteString ?? "")+endpoint) ?? URL(fileURLWithPath: "")
+        // These two can be switch based on the endpoint being used. This will help with scale and expansion of the API
+        //components.queryItems = endpoint.queryItems
+        
+        let completeURL = (components.url?.absoluteString ?? "")+endpoint.fullValueSuffix
+        
+        return URL(string: completeURL) ?? URL(fileURLWithPath: "")
         
     }
     

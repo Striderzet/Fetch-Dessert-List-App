@@ -34,7 +34,6 @@ class FetchDessertAppTests: XCTestCase {
         mealListViewModel = MealListViewModelTest(testData: convertedListData)
         mealListDetailViewModel = MealDetailViewModelTest(data: convertedMealData)
         
-        
     }
 
     override func tearDownWithError() throws {

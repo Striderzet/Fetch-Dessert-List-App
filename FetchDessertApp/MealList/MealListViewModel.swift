@@ -31,7 +31,7 @@ class MealListViewModel: MealListViewModelProtocol, ObservableObject {
     
     /// Normally, this list will be in it's own manager and will be able to be reused throughout the app limiting API calls. For the sake of space and simplicity, it will live here.
     func getMealList(withTestFileData fileData: Data? = nil) {
-        NetworkManager.makeCall(fromEndpoint: APIEndpoint.getDesserts.value,
+        NetworkManager.makeCall(fromEndpoint: APIEndpoint.getDesserts,
                                 toType: MealListModel.self)
             .sink(receiveCompletion: { completion in
                 switch completion {

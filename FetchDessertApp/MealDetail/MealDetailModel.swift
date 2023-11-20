@@ -82,8 +82,6 @@ struct MealDetails: Decodable {
             
             if let decodedObject = try? container.decode(String.self, forKey: key), decodedObject != "" {
                 
-                print("Current decoded object: \(key.stringValue) - \(decodedObject)")
-                
                 // Add to ingredient array
                 if key.stringValue.hasPrefix("strIngredient") {
                     let ingredientKeyValue = key.stringValue.replacingOccurrences(of: "strIngredient", with: "")
