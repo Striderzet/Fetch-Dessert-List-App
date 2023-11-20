@@ -8,11 +8,11 @@
 import Foundation
 
 struct MealListModel: Codable, Hashable {
-    var meals: [Meal]
+    let meals: [Meal]
 }
 
 struct Meal: Codable, Hashable {
-    var strMeal: String
-    var strMealThumb: String
-    var idMeal: String
+    let strMeal: String
+    let strMealThumb: String
+    let idMeal: String
 }

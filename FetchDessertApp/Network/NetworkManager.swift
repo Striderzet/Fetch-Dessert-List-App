@@ -23,7 +23,7 @@ final class NetworkManager {
         
         return Future { promise in
             
-            var request = URLRequest(url: URL(string: endpoint) ?? URL(fileURLWithPath: ""))
+            var request = URLRequest(url: constructURLComponents(endpoint: endpoint))
             
             /// - Note: This would be setup by endpoint here, but to save time it will be static
             request.httpMethod = "GET"
@@ -31,7 +31,7 @@ final class NetworkManager {
             URLSession.shared.dataTaskPublisher(for: request)
                 .tryMap { (data, response) -> Data in
                     guard response is HTTPURLResponse else {
-                        throw (AppValueConstants.Logs.urlResponseError.rawValue as? Error)!
+                        throw StringCastError.runtimeError(AppValueConstants.Logs.urlResponseError.rawValue)
                     }
                     return data
                 }
@@ -53,4 +53,21 @@ final class NetworkManager {
         
     }
     
+    /// This is for potential URL abstraction in the future
+    static private func constructURLComponents(endpoint: String) -> URL {
+        
+        var components = URLComponents()
+        components.scheme = URLConstnats.scheme.rawValue
+        components.host = URLConstnats.host.rawValue
+        components.path = URLConstnats.path.rawValue
+        
+        return URL(string: (components.url?.absoluteString ?? "")+endpoint) ?? URL(fileURLWithPath: "")
+        
+    }
+    
+}
+
+/// Turns string into error
+enum StringCastError: Error {
+    case runtimeError(String)
 }
