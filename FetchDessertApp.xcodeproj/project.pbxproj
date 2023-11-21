@@ -39,6 +39,7 @@
 		CBEE816B2B0BB0C4007ED638 /* MealDetailViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE81692B0BB0C4007ED638 /* MealDetailViewModelProtocol.swift */; };
 		CBEE816D2B0BB259007ED638 /* MealDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = CBEE816C2B0BB259007ED638 /* MealDetail.json */; };
 		CBEE816E2B0BB259007ED638 /* MealDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = CBEE816C2B0BB259007ED638 /* MealDetail.json */; };
+		CBEE81702B0CF06D007ED638 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE816F2B0CF06C007ED638 /* NetworkManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		CBEE81662B0BADCA007ED638 /* MealListViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewModelProtocol.swift; sourceTree = "<group>"; };
 		CBEE81692B0BB0C4007ED638 /* MealDetailViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewModelProtocol.swift; sourceTree = "<group>"; };
 		CBEE816C2B0BB259007ED638 /* MealDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MealDetail.json; sourceTree = "<group>"; };
+		CBEE816F2B0CF06C007ED638 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				CBEE81602B07E119007ED638 /* JSON Files */,
 				CB1AB0352B03BFA70058381F /* FetchDessertAppTests.swift */,
+				CBEE816F2B0CF06C007ED638 /* NetworkManagerTests.swift */,
 				CB1AB0372B03BFA80058381F /* Info.plist */,
 			);
 			path = FetchDessertAppTests;
@@ -296,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBEE81702B0CF06D007ED638 /* NetworkManagerTests.swift in Sources */,
 				CBEE816B2B0BB0C4007ED638 /* MealDetailViewModelProtocol.swift in Sources */,
 				CB1AB0362B03BFA70058381F /* FetchDessertAppTests.swift in Sources */,
 				CBEE815C2B07CEF6007ED638 /* MealDetailModel.swift in Sources */,

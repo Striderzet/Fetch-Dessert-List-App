@@ -53,7 +53,7 @@ class FetchDessertAppTests: XCTestCase {
         }
     }
     
-    // Test cases
+    // Test cases (positive only)
     
     /// Run test comparison for first few separated values
     func testListConversion() throws {

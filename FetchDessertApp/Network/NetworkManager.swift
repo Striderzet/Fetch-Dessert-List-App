@@ -72,7 +72,3 @@ final class NetworkManager {
     
 }
 
-/// Turns string into error
-enum StringCastError: Error {
-    case runtimeError(String)
-}

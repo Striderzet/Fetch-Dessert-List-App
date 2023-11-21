@@ -8,6 +8,11 @@
 import Foundation
 import SwiftUI
 
+/// Turns string into error
+enum StringCastError: Error {
+    case runtimeError(String)
+}
+
 /// Constant values that are used throughout the app
 enum AppValueConstants {
     

@@ -46,20 +46,20 @@ class MealDetailViewModel: MealDetailViewModelProtocol, ObservableObject {
     // MARK: - Views
     
     func retrievedIngredientsAndMeasurements() -> some View {
-        return VStack {
+        return Group {
             if let count = model?.meals[0].strIngredient?.count,
                let meal = model?.meals[0] {
                 
                 ForEach(1..<count, id:\.self) { index in
                     
-                    HStack {
+                    return HStack {
                         Text(meal.strIngredient?[index] ?? "")
-                            .font(.system(size: AppValueConstants.Numeric.fontSize20.rawValue))
+                            .font(.system(size: AppValueConstants.Numeric.fontSize12.rawValue))
                             .minimumScaleFactor(AppValueConstants.Numeric.textMinSCale05.rawValue)
                             .padding()
                         Spacer()
                         Text(meal.strMeasure?[index] ?? "")
-                            .font(.system(size: AppValueConstants.Numeric.fontSize20.rawValue))
+                            .font(.system(size: AppValueConstants.Numeric.fontSize12.rawValue))
                             .minimumScaleFactor(AppValueConstants.Numeric.textMinSCale05.rawValue)
                             .padding()
                     }

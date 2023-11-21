@@ -9,5 +9,5 @@ import Foundation
 
 protocol MealListViewModelProtocol {
     var model: MealListModel? { get set }
-    func getMealList(withTestFileData fileData: Data?)
+    func getMealList(withListCategory category: ListCategories, withTestFileData fileData: Data?)
 }
