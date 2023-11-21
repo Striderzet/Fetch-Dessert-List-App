@@ -40,6 +40,14 @@
 		CBEE816D2B0BB259007ED638 /* MealDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = CBEE816C2B0BB259007ED638 /* MealDetail.json */; };
 		CBEE816E2B0BB259007ED638 /* MealDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = CBEE816C2B0BB259007ED638 /* MealDetail.json */; };
 		CBEE81702B0CF06D007ED638 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE816F2B0CF06C007ED638 /* NetworkManagerTests.swift */; };
+		CBEE81732B0CFAD4007ED638 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE81722B0CFAD4007ED638 /* RootView.swift */; };
+		CBEE81742B0CFAD4007ED638 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE81722B0CFAD4007ED638 /* RootView.swift */; };
+		CBEE81772B0CFB63007ED638 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE81762B0CFB63007ED638 /* FavoritesView.swift */; };
+		CBEE81782B0CFB63007ED638 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE81762B0CFB63007ED638 /* FavoritesView.swift */; };
+		CBEE817A2B0CFB8B007ED638 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE81792B0CFB8B007ED638 /* FavoritesViewModel.swift */; };
+		CBEE817B2B0CFB8B007ED638 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE81792B0CFB8B007ED638 /* FavoritesViewModel.swift */; };
+		CBEE817D2B0CFBD3007ED638 /* FavoritesViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE817C2B0CFBD3007ED638 /* FavoritesViewModelProtocol.swift */; };
+		CBEE817E2B0CFBD3007ED638 /* FavoritesViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE817C2B0CFBD3007ED638 /* FavoritesViewModelProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +84,10 @@
 		CBEE81692B0BB0C4007ED638 /* MealDetailViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewModelProtocol.swift; sourceTree = "<group>"; };
 		CBEE816C2B0BB259007ED638 /* MealDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MealDetail.json; sourceTree = "<group>"; };
 		CBEE816F2B0CF06C007ED638 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
+		CBEE81722B0CFAD4007ED638 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		CBEE81762B0CFB63007ED638 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		CBEE81792B0CFB8B007ED638 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		CBEE817C2B0CFBD3007ED638 /* FavoritesViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModelProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,8 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				CBE1CD0B2AFD3358007BD92F /* FetchDessertAppApp.swift */,
-				CBE1CD1A2AFD339F007BD92F /* MealList */,
-				CBE1CD1B2AFD33B8007BD92F /* MealDetail */,
+				CBEE81712B0CFAAE007ED638 /* Root */,
 				CBE1CD1E2AFD3416007BD92F /* Network */,
 				CBE1CD272AFD3A50007BD92F /* Utilities */,
 				CBE1CD0F2AFD335C007BD92F /* Assets.xcassets */,
@@ -155,6 +166,7 @@
 				CBEE81662B0BADCA007ED638 /* MealListViewModelProtocol.swift */,
 				CBE1CD252AFD3A24007BD92F /* MealListViewModel.swift */,
 				CBE1CD0D2AFD3358007BD92F /* MealListView.swift */,
+				CBE1CD1B2AFD33B8007BD92F /* MealDetail */,
 			);
 			path = MealList;
 			sourceTree = "<group>";
@@ -195,6 +207,26 @@
 				CBEE816C2B0BB259007ED638 /* MealDetail.json */,
 			);
 			path = "JSON Files";
+			sourceTree = "<group>";
+		};
+		CBEE81712B0CFAAE007ED638 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				CBEE81722B0CFAD4007ED638 /* RootView.swift */,
+				CBE1CD1A2AFD339F007BD92F /* MealList */,
+				CBEE81752B0CFB40007ED638 /* Favorites */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		CBEE81752B0CFB40007ED638 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				CBEE817C2B0CFBD3007ED638 /* FavoritesViewModelProtocol.swift */,
+				CBEE81792B0CFB8B007ED638 /* FavoritesViewModel.swift */,
+				CBEE81762B0CFB63007ED638 /* FavoritesView.swift */,
+			);
+			path = Favorites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,12 +339,16 @@
 				CBEE81632B07E91E007ED638 /* NetworkAPIConstants.swift in Sources */,
 				CBEE81682B0BADCA007ED638 /* MealListViewModelProtocol.swift in Sources */,
 				CBEE815A2B07CEE5007ED638 /* MealListModel.swift in Sources */,
+				CBEE81742B0CFAD4007ED638 /* RootView.swift in Sources */,
 				CBEE815E2B07D0E5007ED638 /* NetworkManager.swift in Sources */,
 				CBEE815D2B07CEFB007ED638 /* MealDetailView.swift in Sources */,
 				CBEE815F2B07D0F6007ED638 /* AppValueConstants.swift in Sources */,
+				CBEE817B2B0CFB8B007ED638 /* FavoritesViewModel.swift in Sources */,
 				CB1AB03D2B03C05E0058381F /* MealListViewModel.swift in Sources */,
+				CBEE81782B0CFB63007ED638 /* FavoritesView.swift in Sources */,
 				CBEE81652B07E92F007ED638 /* SwiftUIImageExtension.swift in Sources */,
 				CBEE81642B07E923007ED638 /* FetchDessertAppApp.swift in Sources */,
+				CBEE817E2B0CFBD3007ED638 /* FavoritesViewModelProtocol.swift in Sources */,
 				CBEE815B2B07CEEE007ED638 /* MealListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,13 +359,17 @@
 			files = (
 				CBE1CD202AFD343A007BD92F /* NetworkManager.swift in Sources */,
 				CBE1CD292AFD3A79007BD92F /* SwiftUIImageExtension.swift in Sources */,
+				CBEE817A2B0CFB8B007ED638 /* FavoritesViewModel.swift in Sources */,
 				CBEE816A2B0BB0C4007ED638 /* MealDetailViewModelProtocol.swift in Sources */,
 				CBE1CD1D2AFD340E007BD92F /* MealDetailView.swift in Sources */,
+				CBEE81732B0CFAD4007ED638 /* RootView.swift in Sources */,
+				CBEE81772B0CFB63007ED638 /* FavoritesView.swift in Sources */,
 				CBEE81672B0BADCA007ED638 /* MealListViewModelProtocol.swift in Sources */,
 				CBE1CD262AFD3A24007BD92F /* MealListViewModel.swift in Sources */,
 				CBE1CD2B2AFD456F007BD92F /* MealDetailModel.swift in Sources */,
 				CBE1CD0E2AFD3358007BD92F /* MealListView.swift in Sources */,
 				CBE1CD222AFD3455007BD92F /* NetworkAPIConstants.swift in Sources */,
+				CBEE817D2B0CFBD3007ED638 /* FavoritesViewModelProtocol.swift in Sources */,
 				CBE1CD2F2AFD5DAD007BD92F /* AppValueConstants.swift in Sources */,
 				CBE1CD242AFD3A0E007BD92F /* MealListModel.swift in Sources */,
 				CBE1CD2D2AFD4583007BD92F /* MealDetailViewModel.swift in Sources */,
