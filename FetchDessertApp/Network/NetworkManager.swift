@@ -8,22 +8,27 @@
 import Combine
 import Foundation
 
+// MARK: - Production Class
+
 /// This network manager will simply make API calls and return the type that is expected in the call
-final class NetworkManager {
+class NetworkManager: NetworkManagerProtocol {
     
-    static var cancellable = Set<AnyCancellable>()
+    static let shared = NetworkManager()
+    
+    var cancellable = Set<AnyCancellable>()
     
     /// This will make the actual call and return the
     /// - Parameters:
     ///   - endpoint: The string of the URL API call
     ///   - type: The type that will be returned to a desired object
     /// - Returns: Future/Promise with object type and error
-    static func makeCall<T: Decodable>(fromEndpoint endpoint: APIEndpoint,
-                                       toType type: T.Type) -> Future<T, Error> {
+    func makeCall<T: Decodable>(withRawData data: Data? = nil,
+                                fromEndpoint endpoint: APIEndpoint,
+                                toType type: T.Type) -> Future<T, Error> {
         
         return Future { promise in
             
-            var request = URLRequest(url: constructURLComponents(endpoint: endpoint))
+            var request = URLRequest(url: self.constructURLComponents(endpoint: endpoint))
             
             /// - Note: This would be setup by endpoint here, but to save time it will be static
             request.httpMethod = "GET"
@@ -47,14 +52,14 @@ final class NetworkManager {
                 }, receiveValue: {
                     promise(.success($0))
                 })
-                .store(in: &cancellable)
+                .store(in: &self.cancellable)
             
         }
         
     }
     
     /// This is for potential URL abstraction in the future
-    static private func constructURLComponents(endpoint: APIEndpoint) -> URL {
+    internal func constructURLComponents(endpoint: APIEndpoint) -> URL {
         
         var components = URLComponents()
         components.scheme = URLConstnats.scheme.rawValue
@@ -68,6 +73,30 @@ final class NetworkManager {
         
         return URL(string: completeURL) ?? URL(fileURLWithPath: "")
         
+    }
+    
+}
+
+// MARK: - Test Class
+
+class NetworkManagerTest: NetworkManagerProtocol {
+    
+    static let shared = NetworkManager()
+    
+    func makeCall<T: Decodable>(withRawData data: Data?, fromEndpoint endpoint: APIEndpoint, toType type: T.Type) -> Future<T, Error> {
+        return Future { promise in
+            let newType = try? JSONDecoder().decode(T.self, from: data!)
+            promise(.success(newType!))
+        }
+    }
+    
+    func constructURLComponents(endpoint: APIEndpoint) -> URL {
+        var components = URLComponents()
+        components.scheme = URLConstnats.scheme.rawValue
+        components.host = URLConstnats.host.rawValue
+        components.path = URLConstnats.path.rawValue
+        let completeURL = (components.url?.absoluteString ?? "")+endpoint.fullValueSuffix
+        return URL(string: completeURL) ?? URL(fileURLWithPath: "")
     }
     
 }

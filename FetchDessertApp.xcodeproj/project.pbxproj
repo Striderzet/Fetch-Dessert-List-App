@@ -48,6 +48,8 @@
 		CBEE817B2B0CFB8B007ED638 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE81792B0CFB8B007ED638 /* FavoritesViewModel.swift */; };
 		CBEE817D2B0CFBD3007ED638 /* FavoritesViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE817C2B0CFBD3007ED638 /* FavoritesViewModelProtocol.swift */; };
 		CBEE817E2B0CFBD3007ED638 /* FavoritesViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE817C2B0CFBD3007ED638 /* FavoritesViewModelProtocol.swift */; };
+		CBEE81802B0CFEA2007ED638 /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE817F2B0CFEA2007ED638 /* NetworkManagerProtocol.swift */; };
+		CBEE81812B0CFEA2007ED638 /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEE817F2B0CFEA2007ED638 /* NetworkManagerProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,7 @@
 		CBEE81762B0CFB63007ED638 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		CBEE81792B0CFB8B007ED638 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		CBEE817C2B0CFBD3007ED638 /* FavoritesViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModelProtocol.swift; sourceTree = "<group>"; };
+		CBEE817F2B0CFEA2007ED638 /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +188,7 @@
 		CBE1CD1E2AFD3416007BD92F /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				CBEE817F2B0CFEA2007ED638 /* NetworkManagerProtocol.swift */,
 				CBE1CD1F2AFD343A007BD92F /* NetworkManager.swift */,
 				CBE1CD212AFD3455007BD92F /* NetworkAPIConstants.swift */,
 			);
@@ -349,6 +353,7 @@
 				CBEE81652B07E92F007ED638 /* SwiftUIImageExtension.swift in Sources */,
 				CBEE81642B07E923007ED638 /* FetchDessertAppApp.swift in Sources */,
 				CBEE817E2B0CFBD3007ED638 /* FavoritesViewModelProtocol.swift in Sources */,
+				CBEE81812B0CFEA2007ED638 /* NetworkManagerProtocol.swift in Sources */,
 				CBEE815B2B07CEEE007ED638 /* MealListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,6 +372,7 @@
 				CBEE81672B0BADCA007ED638 /* MealListViewModelProtocol.swift in Sources */,
 				CBE1CD262AFD3A24007BD92F /* MealListViewModel.swift in Sources */,
 				CBE1CD2B2AFD456F007BD92F /* MealDetailModel.swift in Sources */,
+				CBEE81802B0CFEA2007ED638 /* NetworkManagerProtocol.swift in Sources */,
 				CBE1CD0E2AFD3358007BD92F /* MealListView.swift in Sources */,
 				CBE1CD222AFD3455007BD92F /* NetworkAPIConstants.swift in Sources */,
 				CBEE817D2B0CFBD3007ED638 /* FavoritesViewModelProtocol.swift in Sources */,

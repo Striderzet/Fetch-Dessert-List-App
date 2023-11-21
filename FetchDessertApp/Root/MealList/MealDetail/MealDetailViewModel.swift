@@ -26,7 +26,7 @@ class MealDetailViewModel: MealDetailViewModelProtocol, ObservableObject {
     /// - Parameter status: Mark if the call has successfully completed
     /// - Returns: Status of the calls end result
     func getMeal(withTestFileData fileData: Data? = nil, fromId id: String, status: @escaping(_ complete: Bool) -> ()) {
-        NetworkManager.makeCall(fromEndpoint: APIEndpoint.getMealDetails(mealId: id),
+        NetworkManager.shared.makeCall(fromEndpoint: APIEndpoint.getMealDetails(mealId: id),
                                 toType: MealDetailModel.self)
             .sink(receiveCompletion: { completion in
                 switch completion {

@@ -32,7 +32,6 @@ enum AppValueConstants {
     }
     
     enum AlphaNumeric: String {
-        case desserts = "Desserts"
         case instructions = "Instructions"
         case ingredient = "Ingredient"
         case measurement = "Measurement"

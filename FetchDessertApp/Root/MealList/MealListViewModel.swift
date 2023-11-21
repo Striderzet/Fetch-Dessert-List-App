@@ -35,7 +35,7 @@ class MealListViewModel: MealListViewModelProtocol, ObservableObject {
             model = nil
         }
         
-        NetworkManager.makeCall(fromEndpoint: APIEndpoint.getMealList(mealCategory: category),
+        NetworkManager.shared.makeCall(fromEndpoint: APIEndpoint.getMealList(mealCategory: category),
                                 toType: MealListModel.self)
             .sink(receiveCompletion: { completion in
                 switch completion {
