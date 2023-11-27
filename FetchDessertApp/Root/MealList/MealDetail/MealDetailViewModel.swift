@@ -16,8 +16,16 @@ class MealDetailViewModel: MealDetailViewModelProtocol, ObservableObject {
     // MARK: - Values
     
     @Published var model: MealDetailModel?
+    @Published var toggleFavoriteHeart: Bool = false
     
     private var cancellable = Set<AnyCancellable>()
+    
+    init() {
+        if let id = self.model?.meals.first?.idMeal,
+           ReactivePublisher.shared.favoritesList.value[Int(id) ?? 0] != nil {
+            toggleFavoriteHeart = true
+        }
+    }
     
     // MARK: - Methods
     
@@ -41,6 +49,18 @@ class MealDetailViewModel: MealDetailViewModelProtocol, ObservableObject {
                 status(true)
             })
             .store(in: &cancellable)
+    }
+    
+    /// This will toggle favorite if the ID exists or not
+    /// - Parameter mealId: The ID that needs to be toggled
+    func toggleFavorite(complete: @escaping(_ done: Bool) -> ()) {
+        if let currentMeal = self.model?.meals.first {
+            let meal = Meal(strMeal: currentMeal.strMeal,
+                            strMealThumb: currentMeal.strMealThumb ?? "",
+                            idMeal: currentMeal.idMeal)
+            ReactivePublisher.shared.updateFavoritesList.send(meal)
+            complete(true)
+        }
     }
     
     // MARK: - Views

@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct RootView: View {
+    
+    // This lives here to receive all important communications
+    private let reactiveSubscriber = ReactiveSubscriber()
+    
+    // Always check and publish reachability changes as long as app is active
+    private let networkReachabilityMonitor = NetworkReachabilityMonitor()
+    
     var body: some View {
         TabView {
             

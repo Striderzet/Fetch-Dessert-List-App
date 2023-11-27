@@ -17,6 +17,7 @@ struct MealDetailView: View {
     var body: some View {
         
         ScrollView {
+            
             VStack(alignment: .center, spacing: AppValueConstants.Numeric.spacing2.rawValue) {
                 
                 HStack {
@@ -28,7 +29,24 @@ struct MealDetailView: View {
                             .frame(width: AppValueConstants.Numeric.closeButtonSize.rawValue, height: AppValueConstants.Numeric.closeButtonSize.rawValue)
                     })
                     .padding(.leading)
+                    
                     Spacer()
+                    
+                    Button(action: {
+                        mealDetailViewModel.toggleFavorite() { complete in
+                            if complete {
+                                // I may want to do this after one second
+                                //presentationMode.wrappedValue.dismiss()
+                            }
+                        }
+                    }, label: {
+                        Image(systemName: "heart")
+                            .foregroundColor(mealDetailViewModel.toggleFavoriteHeart ? .pink : .black)
+                            .frame(width: AppValueConstants.Numeric.closeButtonSize.rawValue, height: AppValueConstants.Numeric.closeButtonSize.rawValue)
+                    })
+                    .padding(.trailing)
+                    
+                    
                 }
                 .padding()
                 
@@ -84,6 +102,15 @@ struct MealDetailView: View {
                 
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            .onReceive(ReactivePublisher.shared.favoritesList, perform: { list in
+                if let stringId = self.mealDetailViewModel.model?.meals.first?.idMeal,
+                   let id = Int(stringId),
+                   list[id] != nil {
+                    self.mealDetailViewModel.toggleFavoriteHeart = true
+                } else {
+                    self.mealDetailViewModel.toggleFavoriteHeart = false
+                }
+            })
                 
         }
         

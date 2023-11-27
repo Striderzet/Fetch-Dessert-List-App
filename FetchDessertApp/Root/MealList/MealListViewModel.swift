@@ -16,6 +16,8 @@ class MealListViewModel: MealListViewModelProtocol, ObservableObject {
     // MARK: - Values and init
     
     @Published var model: MealListModel?
+    @Published var selectedCategoryText = ListCategories.american.displayValue
+    @Published var selectedCategory = ListCategories.american
     
     private var cancellable = Set<AnyCancellable>()
     
