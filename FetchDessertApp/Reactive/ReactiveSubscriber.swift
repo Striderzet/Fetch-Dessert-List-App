@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import SwiftUI
 
 class ReactiveSubscriber {
     
@@ -18,7 +19,7 @@ class ReactiveSubscriber {
     
     private func updateFavoritesList() {
         ReactivePublisher.shared.updateFavoritesList
-            .sink(receiveValue: { meal in
+            .sink(receiveValue: { meal, favoritesList, viewContext in
                 
                 var currentFavoritesList = ReactivePublisher.shared.favoritesList.value
                 
@@ -28,8 +29,12 @@ class ReactiveSubscriber {
                 
                 if currentFavoritesList[mealId] == nil {
                     currentFavoritesList[mealId] = meal
+                    DataController.storeFavorite(meal: meal, fromViewContext: viewContext)
                 } else {
                     currentFavoritesList.removeValue(forKey: mealId)
+                    DataController.deleteFavorite(mealId: String(mealId),
+                                                  favoritesList: favoritesList,
+                                                  fromViewContext: viewContext)
                 }
                 
                 ReactivePublisher.shared.favoritesList.send(currentFavoritesList)

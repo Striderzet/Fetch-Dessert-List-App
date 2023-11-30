@@ -11,6 +11,14 @@ struct MealDetailView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \FavoriteMeals.idMeal, ascending: true)],
+        animation: .default)
+    
+    var favorites: FetchedResults<FavoriteMeals>
+    
     /// - Note: This will be a param for when the view gets called to be presented
     @ObservedObject var mealDetailViewModel: MealDetailViewModel
     
@@ -33,12 +41,7 @@ struct MealDetailView: View {
                     Spacer()
                     
                     Button(action: {
-                        mealDetailViewModel.toggleFavorite() { complete in
-                            if complete {
-                                // I may want to do this after one second
-                                //presentationMode.wrappedValue.dismiss()
-                            }
-                        }
+                        mealDetailViewModel.toggleFavorite(fromViewContext: viewContext, favoritesList: favorites) { _ in }
                     }, label: {
                         Image(systemName: "heart")
                             .foregroundColor(mealDetailViewModel.toggleFavoriteHeart ? .pink : .black)

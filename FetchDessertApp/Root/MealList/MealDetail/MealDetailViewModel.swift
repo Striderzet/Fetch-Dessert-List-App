@@ -6,6 +6,7 @@
 //
 
 import Combine
+import CoreData
 import Foundation
 import SwiftUI
 
@@ -53,12 +54,12 @@ class MealDetailViewModel: MealDetailViewModelProtocol, ObservableObject {
     
     /// This will toggle favorite if the ID exists or not
     /// - Parameter mealId: The ID that needs to be toggled
-    func toggleFavorite(complete: @escaping(_ done: Bool) -> ()) {
+    func toggleFavorite(fromViewContext viewContext: NSManagedObjectContext, favoritesList: FetchedResults<FavoriteMeals>, complete: @escaping(_ done: Bool) -> ()) {
         if let currentMeal = self.model?.meals.first {
             let meal = Meal(strMeal: currentMeal.strMeal,
                             strMealThumb: currentMeal.strMealThumb ?? "",
                             idMeal: currentMeal.idMeal)
-            ReactivePublisher.shared.updateFavoritesList.send(meal)
+            ReactivePublisher.shared.updateFavoritesList.send((meal, favoritesList, viewContext))
             complete(true)
         }
     }

@@ -6,7 +6,9 @@
 //
 
 import Combine
+import CoreData
 import Foundation
+import SwiftUI
 
 class ReactivePublisher {
     
@@ -21,7 +23,7 @@ class ReactivePublisher {
     
     // Favorites
     
-    var updateFavoritesList = PassthroughSubject<Meal, Never>()
+    var updateFavoritesList = PassthroughSubject<(Meal, FetchedResults<FavoriteMeals>, NSManagedObjectContext), Never>()
     var favoritesList = CurrentValueSubject<[Int: Meal], Never>([:])
     
     // MARK: - Methods

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		CB14B4532B14ED8C0080772F /* ReactiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB14B4522B14ED8C0080772F /* ReactiveTests.swift */; };
 		CB14B4552B14F72F0080772F /* NetworkReachabilityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB14B4542B14F72F0080772F /* NetworkReachabilityMonitor.swift */; };
+		CB14B4592B1504CE0080772F /* FetchDessertApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB14B4572B1504CE0080772F /* FetchDessertApp.xcdatamodeld */; };
+		CB14B45B2B1636240080772F /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB14B45A2B1636240080772F /* PersistenceController.swift */; };
+		CB14B45D2B163B200080772F /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB14B45C2B163B200080772F /* DataController.swift */; };
 		CB1AB0362B03BFA70058381F /* FetchDessertAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1AB0352B03BFA70058381F /* FetchDessertAppTests.swift */; };
 		CB1AB03D2B03C05E0058381F /* MealListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE1CD252AFD3A24007BD92F /* MealListViewModel.swift */; };
 		CB1AB03E2B03C0620058381F /* MealDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE1CD2C2AFD4583007BD92F /* MealDetailViewModel.swift */; };
@@ -69,6 +72,9 @@
 /* Begin PBXFileReference section */
 		CB14B4522B14ED8C0080772F /* ReactiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveTests.swift; sourceTree = "<group>"; };
 		CB14B4542B14F72F0080772F /* NetworkReachabilityMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityMonitor.swift; sourceTree = "<group>"; };
+		CB14B4582B1504CE0080772F /* CDFavoritesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CDFavoritesModel.xcdatamodel; sourceTree = "<group>"; };
+		CB14B45A2B1636240080772F /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		CB14B45C2B163B200080772F /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		CB1AB0332B03BFA70058381F /* FetchDessertAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchDessertAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB1AB0352B03BFA70058381F /* FetchDessertAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDessertAppTests.swift; sourceTree = "<group>"; };
 		CB1AB0372B03BFA80058381F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -118,6 +124,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB14B4562B15048F0080772F /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				CB14B45A2B1636240080772F /* PersistenceController.swift */,
+				CB14B45C2B163B200080772F /* DataController.swift */,
+				CB14B4572B1504CE0080772F /* FetchDessertApp.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		CB1AB0342B03BFA70058381F /* FetchDessertAppTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +172,7 @@
 				CBE1CD1E2AFD3416007BD92F /* Network */,
 				CBE1CD272AFD3A50007BD92F /* Utilities */,
 				CBEE81842B0D1509007ED638 /* Reactive */,
+				CB14B4562B15048F0080772F /* CoreData */,
 				CBE1CD0F2AFD335C007BD92F /* Assets.xcassets */,
 				CBE1CD142AFD335C007BD92F /* Info.plist */,
 				CBE1CD112AFD335C007BD92F /* Preview Content */,
@@ -395,6 +412,7 @@
 				CBEE816A2B0BB0C4007ED638 /* MealDetailViewModelProtocol.swift in Sources */,
 				CBE1CD1D2AFD340E007BD92F /* MealDetailView.swift in Sources */,
 				CBEE81732B0CFAD4007ED638 /* RootView.swift in Sources */,
+				CB14B4592B1504CE0080772F /* FetchDessertApp.xcdatamodeld in Sources */,
 				CBEE81772B0CFB63007ED638 /* FavoritesView.swift in Sources */,
 				CBEE81672B0BADCA007ED638 /* MealListViewModelProtocol.swift in Sources */,
 				CBEE818D2B0D4A63007ED638 /* MealListComponent.swift in Sources */,
@@ -404,10 +422,12 @@
 				CBE1CD0E2AFD3358007BD92F /* MealListView.swift in Sources */,
 				CBEE81862B0D153D007ED638 /* ReactivePublisher.swift in Sources */,
 				CBE1CD222AFD3455007BD92F /* NetworkAPIConstants.swift in Sources */,
+				CB14B45B2B1636240080772F /* PersistenceController.swift in Sources */,
 				CBE1CD2F2AFD5DAD007BD92F /* AppValueConstants.swift in Sources */,
 				CBE1CD242AFD3A0E007BD92F /* MealListModel.swift in Sources */,
 				CBE1CD2D2AFD4583007BD92F /* MealDetailViewModel.swift in Sources */,
 				CBEE81892B0D155C007ED638 /* ReactiveSubscriber.swift in Sources */,
+				CB14B45D2B163B200080772F /* DataController.swift in Sources */,
 				CB14B4552B14F72F0080772F /* NetworkReachabilityMonitor.swift in Sources */,
 				CBE1CD0C2AFD3358007BD92F /* FetchDessertAppApp.swift in Sources */,
 			);
@@ -655,6 +675,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CB14B4572B1504CE0080772F /* FetchDessertApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CB14B4582B1504CE0080772F /* CDFavoritesModel.xcdatamodel */,
+			);
+			currentVersion = CB14B4582B1504CE0080772F /* CDFavoritesModel.xcdatamodel */;
+			path = FetchDessertApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CBE1CD002AFD3358007BD92F /* Project object */;
 }
