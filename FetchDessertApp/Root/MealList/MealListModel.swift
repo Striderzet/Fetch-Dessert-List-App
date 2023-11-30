@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - This is the simple meal model for a meal entry from a simple list call by meal category
+
 struct MealListModel: Codable, Hashable {
     let meals: [Meal]
 }

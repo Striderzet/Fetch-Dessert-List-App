@@ -17,7 +17,7 @@ enum NetworkStatus: String {
     case monitor = "Monitor"
 }
 
-/// Observer and publisher for app's lifecycle network status
+/// Observer and publisher for app's lifecycle network status. Needs to be placed in root view to consistently publish connection statuses.
 class NetworkReachabilityMonitor: ObservableObject {
     
     private let monitor = NWPathMonitor()

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// Component to facilitate the meal list throughout the app
+/// Global component to facilitate the meal list throughout the app
 struct MealListComponent: View {
     
     // Parameters
@@ -18,8 +18,6 @@ struct MealListComponent: View {
     // Private
     @State private var selectedMeal = MealDetailViewModel()
     @State private var presentMeal = false
-    
-    let favoriteLabel = "Favorite"
     
     var body: some View {
         
@@ -52,7 +50,7 @@ struct MealListComponent: View {
                     
                 } else {
                     // This list can possibly be many things, but for now it can only be favorite if not the main list
-                    Text(favoriteLabel)
+                    Text(AppValueConstants.Labels.favorites.rawValue)
                         .foregroundColor(.black)
                         .font(.system(size: AppValueConstants.Numeric.fontSize24.rawValue).bold())
                         .padding(.top)

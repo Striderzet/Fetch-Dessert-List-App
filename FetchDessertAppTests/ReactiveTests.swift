@@ -10,12 +10,12 @@ import XCTest
 
 class ReactiveTests: XCTestCase {
     
-    var reactivePublisher: ReactivePublisher?
-    let reactiveSubscriber = ReactiveSubscriber()
+    //var reactivePublisher: ReactivePublisher?
+    //let reactiveSubscriber = ReactiveSubscriber()
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        reactivePublisher = ReactivePublisher()
+        //reactivePublisher = ReactivePublisher()
         
     }
 

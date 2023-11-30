@@ -32,7 +32,7 @@ struct MealDetailView: View {
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
-                        Image(systemName: "xmark")
+                        Image(systemName: AppValueConstants.SystemImageNames.xmark.rawValue)
                             .foregroundColor(.black)
                             .frame(width: AppValueConstants.Numeric.closeButtonSize.rawValue, height: AppValueConstants.Numeric.closeButtonSize.rawValue)
                     })
@@ -43,7 +43,7 @@ struct MealDetailView: View {
                     Button(action: {
                         mealDetailViewModel.toggleFavorite(fromViewContext: viewContext, favoritesList: favorites) { _ in }
                     }, label: {
-                        Image(systemName: "heart")
+                        Image(systemName: AppValueConstants.SystemImageNames.heart.rawValue)
                             .foregroundColor(mealDetailViewModel.toggleFavoriteHeart ? .pink : .black)
                             .frame(width: AppValueConstants.Numeric.closeButtonSize.rawValue, height: AppValueConstants.Numeric.closeButtonSize.rawValue)
                     })

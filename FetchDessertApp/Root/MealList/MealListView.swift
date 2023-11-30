@@ -23,7 +23,7 @@ struct MealListView: View {
         } else {
             
             if !ReactivePublisher.shared.appNetworkStatus.value {
-                Text("No signal at the moment")
+                Text(AppValueConstants.Labels.noSignal.rawValue)
                     .onReceive(ReactivePublisher.shared.appNetworkStatus, perform: {
                         if $0 {
                             // Refresh when back on line. This needs to be done here to keep the refresh local

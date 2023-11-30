@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - This view needs no view model because it just facilitates the favorites list which is a global components that has all favorite actions within the meal detail views. This is also loaded by core data when app is first loaded.
+
 struct FavoritesView: View {
     
     @State var meals: [Meal]?
@@ -23,7 +25,7 @@ struct FavoritesView: View {
             } else {
                 if !loading {
                     VStack(alignment: .center) {
-                        Text("No Favorites at the Moment")
+                        Text(AppValueConstants.Labels.noFavorites.rawValue)
                     }
                 } else {
                     VStack(alignment: .center) {
@@ -36,21 +38,30 @@ struct FavoritesView: View {
             
         }
         .onReceive(ReactivePublisher.shared.favoritesList, perform: { list in
-            
-            loading = true
-            meals = nil
-            
-            /// - Note: This is a workaround and i don't like it
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.2, execute: {
-                meals = list.map{ $1 }
-                meals?.sort { $0.strMeal < $1.strMeal }
-                loading = false
-                print("Fave list updated: \(String(describing: meals))")
-            })
-            
+            refreshList(fromList: list)
         })
         
     }
+    
+    // MARK: - Methods
+    
+    /// - Note: Keeping this local because it needs local files and is only on method here
+    
+    /// Refresh list when a new one is received
+    /// - Parameter list: Updated favorites list
+    private func refreshList(fromList list: [Int: Meal]) {
+        loading = true
+        meals = nil
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.2, execute: {
+            meals = list.map{ $1 }
+            meals?.sort { $0.strMeal < $1.strMeal }
+            loading = false
+            print(AppValueConstants.Logs.favoriteListUpdated.rawValue)
+            
+        })
+    }
+    
 }
 
 struct FavoritesView_Previews: PreviewProvider {

@@ -20,6 +20,7 @@ struct FetchDessertAppApp: App {
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
         .onChange(of: scenePhase, perform: { _ in
+            // This will save the CD in the event of the app backgrounding or foregrounding
             persistenceController.save()
         })
     }

@@ -36,7 +36,7 @@ struct PersistenceController {
     // An initializer to load Core Data, optionally able to use an in-memory store.
     init(inMemory: Bool = false) {
         
-        container = NSPersistentContainer(name: "FetchDessertApp")
+        container = NSPersistentContainer(name: AppValueConstants.CoreDataConfig.containerName.rawValue)
 
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")

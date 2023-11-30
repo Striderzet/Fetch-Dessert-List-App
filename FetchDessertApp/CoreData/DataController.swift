@@ -36,11 +36,11 @@ final class DataController {
     }
     
     
-    /// <#Description#>
+    /// Delete method for a favorite that already exists that passes through the flow
     /// - Parameters:
-    ///   - mealId: <#mealId description#>
-    ///   - favoritesList: <#favoritesList description#>
-    ///   - viewContext: <#viewContext description#>
+    ///   - mealId: ID of the selected meal
+    ///   - favoritesList: Fetched results list to be modified
+    ///   - viewContext: View context where the current data store is currently. This is passed from the SwiftUI view where it is successfully retrieved.
     static func deleteFavorite(mealId: String,
                                favoritesList: FetchedResults<FavoriteMeals>,
                                fromViewContext viewContext: NSManagedObjectContext) {

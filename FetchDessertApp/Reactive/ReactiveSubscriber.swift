@@ -30,11 +30,13 @@ class ReactiveSubscriber {
                 if currentFavoritesList[mealId] == nil {
                     currentFavoritesList[mealId] = meal
                     DataController.storeFavorite(meal: meal, fromViewContext: viewContext)
+                    print("\(AppValueConstants.Logs.favoritedAdded.rawValue)\(mealId)")
                 } else {
                     currentFavoritesList.removeValue(forKey: mealId)
                     DataController.deleteFavorite(mealId: String(mealId),
                                                   favoritesList: favoritesList,
                                                   fromViewContext: viewContext)
+                    print("\(AppValueConstants.Logs.favoritedRemoved.rawValue)\(mealId)")
                 }
                 
                 ReactivePublisher.shared.favoritesList.send(currentFavoritesList)

@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - This is the complete model for a detailed meal that gets called by meal ID from the API
+
 struct MealDetailModel: Decodable {
     let meals: [MealDetails]
 }
@@ -78,21 +80,25 @@ struct MealDetails: Decodable {
         var tempIngredientArray = [Int: String]()
         var tempMeasurementArray = [Int: String]()
         
+        // These can be local
+        let strIngredientKey = "strIngredient"
+        let strMeasureKey = "strMeasure"
+        
         for key in container.allKeys {
             
             if let decodedObject = try? container.decode(String.self, forKey: key), decodedObject != "" {
                 
                 // Add to ingredient array
-                if key.stringValue.hasPrefix("strIngredient") {
-                    let ingredientKeyValue = key.stringValue.replacingOccurrences(of: "strIngredient", with: "")
+                if key.stringValue.hasPrefix(strIngredientKey) {
+                    let ingredientKeyValue = key.stringValue.replacingOccurrences(of: strIngredientKey, with: "")
                     if let ingredientKey = Int(ingredientKeyValue) {
                         tempIngredientArray[ingredientKey] = decodedObject
                     }
                 }
                 
                 // Add to measurement array
-                if key.stringValue.hasPrefix("strMeasure") {
-                    let measurementKeyValue = key.stringValue.replacingOccurrences(of: "strMeasure", with: "")
+                if key.stringValue.hasPrefix(strMeasureKey) {
+                    let measurementKeyValue = key.stringValue.replacingOccurrences(of: strMeasureKey, with: "")
                     if let measurementKey = Int(measurementKeyValue) {
                         tempMeasurementArray[measurementKey] = decodedObject
                     }

@@ -19,7 +19,7 @@ public func AsyncImageCustom(imageUrl: String) -> Image {
         return Image(uiImage: UIImage(data: data)!)
             .resizable()
     } else {
-        return Image(systemName: "sparkles")
+        return Image(systemName: AppValueConstants.SystemImageNames.sparkles.rawValue)
             .resizable()
     }
 }

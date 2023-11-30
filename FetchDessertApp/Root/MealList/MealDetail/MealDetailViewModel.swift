@@ -66,6 +66,9 @@ class MealDetailViewModel: MealDetailViewModelProtocol, ObservableObject {
     
     // MARK: - Views
     
+    
+    /// Shows all ingredients and measurements from all that are stored in array from decoding the JSON Data
+    /// - Returns: List of ingredients and measurements in a SwiftUI View
     func retrievedIngredientsAndMeasurements() -> some View {
         return Group {
             if let count = model?.meals[0].strIngredient?.count,
@@ -93,18 +96,3 @@ class MealDetailViewModel: MealDetailViewModelProtocol, ObservableObject {
     
 }
 
-// MARK: - Test View Model
-
-class MealDetailViewModelTest: MealDetailViewModelProtocol {
-    
-    var model: MealDetailModel?
-    
-    init(data: Data) {
-        getMeal(withTestFileData: data, fromId: "") { _ in }
-    }
-    
-    func getMeal(withTestFileData fileData: Data?, fromId id: String, status: @escaping (Bool) -> ()) {
-        model = try? JSONDecoder().decode(MealDetailModel.self, from: fileData!)
-    }
-    
-}

@@ -31,14 +31,14 @@ struct RootView: View {
             
             MealListView()
                 .tabItem({
-                    Image(systemName: "list.star")
-                    Text("Recipes")
+                    Image(systemName: AppValueConstants.SystemImageNames.listStar.rawValue)
+                    Text(AppValueConstants.Labels.recipes.rawValue)
                 })
             
             FavoritesView()
                 .tabItem({
-                    Image(systemName: "star")
-                    Text("Favorites")
+                    Image(systemName: AppValueConstants.SystemImageNames.star.rawValue)
+                    Text(AppValueConstants.Labels.favorites.rawValue)
                 })
             
         }
