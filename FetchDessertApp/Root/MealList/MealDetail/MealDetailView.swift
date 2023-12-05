@@ -11,24 +11,45 @@ struct MealDetailView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \FavoriteMeals.idMeal, ascending: true)],
+        animation: .default)
+    
+    var favorites: FetchedResults<FavoriteMeals>
+    
     /// - Note: This will be a param for when the view gets called to be presented
-    @StateObject var mealDetailViewModel: MealDetailViewModel
+    @ObservedObject var mealDetailViewModel: MealDetailViewModel
     
     var body: some View {
         
         ScrollView {
+            
             VStack(alignment: .center, spacing: AppValueConstants.Numeric.spacing2.rawValue) {
                 
                 HStack {
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
-                        Image(systemName: "xmark")
+                        Image(systemName: AppValueConstants.SystemImageNames.xmark.rawValue)
                             .foregroundColor(.black)
                             .frame(width: AppValueConstants.Numeric.closeButtonSize.rawValue, height: AppValueConstants.Numeric.closeButtonSize.rawValue)
                     })
                     .padding(.leading)
+                    
                     Spacer()
+                    
+                    Button(action: {
+                        mealDetailViewModel.toggleFavorite(fromViewContext: viewContext, favoritesList: favorites) { _ in }
+                    }, label: {
+                        Image(systemName: AppValueConstants.SystemImageNames.heart.rawValue)
+                            .foregroundColor(mealDetailViewModel.toggleFavoriteHeart ? .pink : .black)
+                            .frame(width: AppValueConstants.Numeric.closeButtonSize.rawValue, height: AppValueConstants.Numeric.closeButtonSize.rawValue)
+                    })
+                    .padding(.trailing)
+                    
+                    
                 }
                 .padding()
                 
@@ -69,35 +90,10 @@ struct MealDetailView: View {
                             .font(.system(size: AppValueConstants.Numeric.fontSize15.rawValue).bold())
                             .padding()
                     }
+                    
                     Divider()
                     
-                    /// - Note: Placed in groups to get past the "10 views per" SwiftUI rule
-                    Group {
-                        ingredientAndMeasurement(meal.strIngredient1, meal.strMeasure1)
-                        ingredientAndMeasurement(meal.strIngredient2, meal.strMeasure2)
-                        ingredientAndMeasurement(meal.strIngredient3, meal.strMeasure3)
-                        ingredientAndMeasurement(meal.strIngredient4, meal.strMeasure4)
-                        ingredientAndMeasurement(meal.strIngredient5, meal.strMeasure5)
-                        ingredientAndMeasurement(meal.strIngredient6, meal.strMeasure6)
-                        ingredientAndMeasurement(meal.strIngredient7, meal.strMeasure7)
-                        ingredientAndMeasurement(meal.strIngredient8, meal.strMeasure8)
-                        ingredientAndMeasurement(meal.strIngredient9, meal.strMeasure9)
-                        ingredientAndMeasurement(meal.strIngredient10, meal.strMeasure10)
-                    }
-                    
-                    Group {
-                        ingredientAndMeasurement(meal.strIngredient11, meal.strMeasure11)
-                        ingredientAndMeasurement(meal.strIngredient12, meal.strMeasure12)
-                        ingredientAndMeasurement(meal.strIngredient13, meal.strMeasure13)
-                        ingredientAndMeasurement(meal.strIngredient14, meal.strMeasure14)
-                        ingredientAndMeasurement(meal.strIngredient15, meal.strMeasure15)
-                        ingredientAndMeasurement(meal.strIngredient16, meal.strMeasure16)
-                        ingredientAndMeasurement(meal.strIngredient17, meal.strMeasure17)
-                        ingredientAndMeasurement(meal.strIngredient18, meal.strMeasure18)
-                        ingredientAndMeasurement(meal.strIngredient19, meal.strMeasure19)
-                        ingredientAndMeasurement(meal.strIngredient20, meal.strMeasure20)
-                    }
-                    
+                    mealDetailViewModel.retrievedIngredientsAndMeasurements()
                     
                 } else {
                     VStack(alignment: .center) {
@@ -109,29 +105,18 @@ struct MealDetailView: View {
                 
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            .onReceive(ReactivePublisher.shared.favoritesList, perform: { list in
+                if let stringId = self.mealDetailViewModel.model?.meals.first?.idMeal,
+                   let id = Int(stringId),
+                   list[id] != nil {
+                    self.mealDetailViewModel.toggleFavoriteHeart = true
+                } else {
+                    self.mealDetailViewModel.toggleFavoriteHeart = false
+                }
+            })
                 
         }
-    }
-    
-    // MARK: - Private
-    
-    /// Setup the columns for ingredient and measurement
-    @ViewBuilder
-    private func ingredientAndMeasurement(_ ingredient: String?, _ measurement: String?) -> some View {
-        if let ingr = ingredient, let meas = measurement,
-           ingr != "", meas != "" {
-            HStack {
-                Text(ingr)
-                    .font(.system(size: AppValueConstants.Numeric.fontSize12.rawValue))
-                    .minimumScaleFactor(AppValueConstants.Numeric.textMinSCale05.rawValue)
-                    .padding()
-                Spacer()
-                Text(meas)
-                    .font(.system(size: AppValueConstants.Numeric.fontSize12.rawValue))
-                    .minimumScaleFactor(AppValueConstants.Numeric.textMinSCale05.rawValue)
-                    .padding()
-            }
-        } 
+        
     }
     
 }

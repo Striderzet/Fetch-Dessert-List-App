@@ -8,6 +8,11 @@
 import Foundation
 import SwiftUI
 
+/// Turns string into error
+enum StringCastError: Error {
+    case runtimeError(String)
+}
+
 /// Constant values that are used throughout the app
 enum AppValueConstants {
     
@@ -27,7 +32,6 @@ enum AppValueConstants {
     }
     
     enum AlphaNumeric: String {
-        case desserts = "Desserts"
         case instructions = "Instructions"
         case ingredient = "Ingredient"
         case measurement = "Measurement"
@@ -40,6 +44,29 @@ enum AppValueConstants {
         case mealError = "LOG: There was an error with the meal fetch: "
         case apiCallSuccess = "LOG: Call Finished"
         case urlResponseError = "LOG: URL response error"
+        case favoriteListUpdated = "LOG: Favorite list updated"
+        case favoritedAdded = "LOG: Favorite meal added, ID:"
+        case favoritedRemoved = "LOG: Favorite meal removed, ID:"
+    }
+    
+    enum Labels: String {
+        case recipes = "Recipes"
+        case favorites = "Favorites"
+        
+        case noSignal = "No signal at the moment"
+        case noFavorites = "No Favorites at the Moment"
+    }
+    
+    enum SystemImageNames: String {
+        case listStar = "list.star"
+        case star
+        case xmark
+        case heart
+        case sparkles
+    }
+    
+    enum CoreDataConfig: String {
+        case containerName = "FetchDessertApp"
     }
     
 }
